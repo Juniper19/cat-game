@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=3 uid="uid://bu3t3aya88t35"]
+
+[ext_resource type="Texture2D" uid="uid://blxtf8vxg44a3" path="res://Mouse by ikoiku/MouseRun.png" id="1_8y5h0"]
+[ext_resource type="Script" uid="uid://cn37f3ymsskvc" path="res://enemy.gd" id="1_76thy"]
+[ext_resource type="PackedScene" uid="uid://cjtwo2h7dhhs0" path="res://hitbox.tscn" id="3_fv5ag"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okppv"]
+atlas = ExtResource("1_8y5h0")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8843"]
+atlas = ExtResource("1_8y5h0")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khnpr"]
+atlas = ExtResource("1_8y5h0")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cfi7"]
+atlas = ExtResource("1_8y5h0")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4bs2"]
+atlas = ExtResource("1_8y5h0")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1hi8"]
+atlas = ExtResource("1_8y5h0")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eupd4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okppv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8843")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khnpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8cfi7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4bs2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1hi8")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vc4mh"]
+size = Vector2(9.5, 5)
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_76thy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_eupd4")
+animation = &"Run"
+autoplay = "Run"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.25, -2.5)
+shape = SubResource("RectangleShape2D_vc4mh")
+
+[node name="LedgeCheckRight" type="RayCast2D" parent="."]
+position = Vector2(6, -1)
+target_position = Vector2(0, 7)
+
+[node name="LedgeCheckLeft" type="RayCast2D" parent="."]
+position = Vector2(-2, -1)
+target_position = Vector2(0, 7)
+
+[node name="Hitbox" parent="." instance=ExtResource("3_fv5ag")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Hitbox"]
+polygon = PackedVector2Array(-3, 0, -3, 0, -4, 0, -2, -6, 6, -6, 6, 0)

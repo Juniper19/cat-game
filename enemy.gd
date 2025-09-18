@@ -1,0 +1,24 @@
+extends CharacterBody2D
+
+var direction = Vector2.RIGHT
+@onready var ledgeCheckRight: = $LedgeCheckRight
+@onready var ledgeCheckLeft: = $LedgeCheckLeft
+@onready var sprite: = $AnimatedSprite2D
+
+func _physics_process(delta):
+	var found_wall = is_on_wall()
+	var found_ledge = not ledgeCheckRight.is_colliding() or not ledgeCheckLeft.is_colliding()
+	
+	if found_wall or found_ledge:
+		direction *= -1 
+		
+	if velocity.x == 0:
+		pass
+	else:
+		$AnimatedSprite2D.animation = "Run"
+		
+	sprite.flip_h = direction.x < 0 #True or false value, flips when direction changes
+	
+	velocity = direction * 25;
+	move_and_slide()
+	
