@@ -13,6 +13,8 @@ class_name Cat
 @export var DASH_COUNTUP: int = 0;
 @export var DASH_TIME: int = .5;
 
+var has_key: bool = false
+
 		##perfect command for crouch jump lol: velocity.x = move_toward(velocity.x, 0, DASH_SPEED)
 
 func _physics_process(delta):
@@ -91,3 +93,7 @@ func apply_friction():
 	
 func apply_acceleration(amount):
 	velocity.x = move_toward(velocity.x, MAX_SPEED * amount, ACCELERATION);
+	
+func _on_key_collected():
+	has_key = true
+	print("Got the key!")

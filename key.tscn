@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvjqsp8uf37q5"]
+
+[ext_resource type="Texture2D" uid="uid://bqeo6esjekan" path="res://tiles_packed.png" id="1_up4cr"]
+[ext_resource type="Script" uid="uid://bh83xja3xf3u7" path="res://key_pickup.gd" id="2_p0yg6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0yg6"]
+size = Vector2(19, 9)
+
+[node name="Key" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_up4cr")
+hframes = 20
+vframes = 9
+frame = 27
+metadata/_edit_group_ = true
+
+[node name="KeyPickup" type="Area2D" parent="."]
+collision_mask = 0
+script = ExtResource("2_p0yg6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KeyPickup"]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_p0yg6")

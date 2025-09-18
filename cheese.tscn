@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://ccd3mhlyjmba5"]
+[gd_scene load_steps=3 format=3 uid="uid://di4j1q5wy1kpg"]
 
-[node name="Cheese" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://dnxmybh4uig0a" path="res://Mouse by ikoiku/Cheese.png" id="1_kw545"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kw545"]
+size = Vector2(14, 11)
+
+[node name="Cheese" type="Area2D"]
+
+[node name="Cheese" type="Sprite2D" parent="."]
+scale = Vector2(1, 0.875)
+texture = ExtResource("1_kw545")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kw545")

@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://di83d5qmn42bj"]
+
+[ext_resource type="PackedScene" uid="uid://dixxw4sy78dj6" path="res://spikes.tscn" id="1_fffli"]
+[ext_resource type="Script" uid="uid://bieav2hoa72vk" path="res://Levels/level_1.gd" id="1_uju8n"]
+[ext_resource type="PackedScene" uid="uid://cq8b6vqv70k07" path="res://tile_map.tscn" id="2_l5sbj"]
+[ext_resource type="PackedScene" uid="uid://bu3t3aya88t35" path="res://enemy.tscn" id="2_p5yrs"]
+[ext_resource type="PackedScene" uid="uid://dhklr0eyjebnh" path="res://player.tscn" id="2_y8v20"]
+[ext_resource type="PackedScene" uid="uid://bvjqsp8uf37q5" path="res://key.tscn" id="7_pkg7o"]
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_uju8n")
+
+[node name="Player" parent="." instance=ExtResource("2_y8v20")]
+z_index = 10
+position = Vector2(141, 102)
+
+[node name="Enemy" parent="." instance=ExtResource("2_p5yrs")]
+position = Vector2(335, 145)
+scale = Vector2(1.02602, 1)
+
+[node name="Spikes" parent="." instance=ExtResource("1_fffli")]
+position = Vector2(443, 91)
+
+[node name="Spikes2" parent="." instance=ExtResource("1_fffli")]
+position = Vector2(426, 91)
+
+[node name="Spikes3" parent="." instance=ExtResource("1_fffli")]
+position = Vector2(500, 87)
+
+[node name="TileMap" parent="." instance=ExtResource("2_l5sbj")]
+scale = Vector2(1.05072, 1.00689)
+layer_0/tile_data = PackedInt32Array(393223, 524288, 2, 393224, 589824, 2, 393225, 655360, 2, 327691, 524288, 2, 327692, 589824, 2, 327693, 655360, 2, 524306, 589824, 2, 524307, 589824, 2, 524308, 655360, 2, 524303, 524288, 2, 524304, 589824, 2, 524305, 589824, 2, 327688, 524288, 4, 262156, 524288, 4, 393228, 589824, 3, 458764, 589824, 4, 524300, 589824, 4, 589836, 589824, 4, 655372, 589824, 4, 720908, 589824, 4, 786444, 589824, 4, 458760, 589824, 3, 524296, 589824, 4, 589832, 589824, 4, 655368, 589824, 4, 720904, 589824, 4, 786440, 589824, 4, 851976, 589824, 4, 851980, 589824, 4, 917516, 589824, 4, 983052, 589824, 4, 1048588, 589824, 4, 917512, 589824, 4, 983048, 589824, 4, 1048584, 589824, 4, 458768, 1114112, 6, 393232, 1048576, 5, 327696, 1048576, 4, 131088, 1179648, 0, 196624, 1179648, 1, 262160, 1114112, 4, 458770, 1179648, 6, 458771, 1245184, 5, 458772, 1245184, 5, 393234, 1114112, 4, 327698, 1179648, 0, 131087, 1114112, 0, 196623, 1114112, 1, 262159, 1114112, 2, 131089, 1245184, 0, 196625, 1245184, 1, 262161, 1245184, 2, 393235, 1245184, 2, 393233, 1114112, 2, 327697, 1114112, 0, 327699, 1245184, 0, 458773, 1245184, 6, 327702, 524288, 2, 327703, 655360, 2, 327705, 524288, 2, 327706, 589824, 2, 327707, 655360, 2, 327709, 524288, 2, 327710, 589824, 2, 327711, 655360, 2, 196638, 655360, 5, 262174, 655360, 6, 65552, 524288, 7, 524311, 851968, 7, 524312, 917504, 7, 524313, 983040, 7, 524315, 851968, 7, 524316, 917504, 7, 524317, 983040, 7, 131079, 851968, 7, 131080, 917504, 7, 131081, 983040, 7, 65544, 458752, 3)
+
+[node name="Key" parent="." instance=ExtResource("7_pkg7o")]
+position = Vector2(181, 102)
